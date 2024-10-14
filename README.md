@@ -10,7 +10,7 @@ This is a simple weather app built using Salesforce Lightning Components. The ap
 1. Clone the weather app project from the repository
 2. Open the project in VS code editor and deploy the package using 'SFDX: Deploy This Source to Org'.
 3. Create custom setting record for weather api endpoint and API key (to be shared)
-Assign the permission set OpenWeather_Admin to view the weather app
+4. Assign the permission set OpenWeather_Admin to view the weather app
 
 ## Usage
 The app displays a button labeled "Fetch Weather" when opened.
