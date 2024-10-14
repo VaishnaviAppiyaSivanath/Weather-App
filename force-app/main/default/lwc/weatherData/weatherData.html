@@ -1,0 +1,22 @@
+<template>
+    <lightning-card>
+        <lightning-button label="Fetch Weather" title="Fetch Weather" onclick={fetchWeather} class="slds-button_full-width"></lightning-button>
+        <template if:true={isVisible} >
+            
+            <div class="slds-grid" >
+                <div class="slds-col">
+                    Temp °C: {weatherResponse.main.temp} <br>
+                    <img class="weather" src={weatherIcon}></img> 
+                </div>
+                <div class="slds-col" >
+                    Feels like °C: {weatherResponse.main.feels_like} <br>
+                    Humidity: {weatherResponse.main.humidity} %<br>
+                    Max Temp °C: {weatherResponse.main.temp_max} <br>
+                    Min Temp °C: {weatherResponse.main.temp_min} <br>
+                </div>
+            </div>
+        </template>
+        
+    </lightning-card>
+    
+</template>
