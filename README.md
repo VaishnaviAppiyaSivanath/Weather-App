@@ -1,18 +1,18 @@
-# Salesforce DX Project: Next Steps
+# Weather App
+This is a simple weather app built using Salesforce Lightning Components. The app allows users to fetch and display weather data for a given location.
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## Features
+* Fetches real-time weather data from an external API
+* Displays temperature, humidity, and other weather-related information
+* Provides a user-friendly interface using Salesforce Lightning Components
 
-## How Do You Plan to Deploy Your Changes?
+## Getting Started
+1. Clone the weather app project from the repository
+2. Open the project in VS code editor and deploy the package using 'SFDX: Deploy This Source to Org'.
+3. Create custom setting record for weather api endpoint and API key (to be shared)
+Assign the permission set OpenWeather_Admin to view the weather app
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
-
-## Configure Your Salesforce DX Project
-
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+## Usage
+The app displays a button labeled "Fetch Weather" when opened.
+Click the "Fetch Weather" button to fetch the current weather data for the specified location.
+The app displays the weather data, including temperature, humidity, and other information, in a formatted manner.
