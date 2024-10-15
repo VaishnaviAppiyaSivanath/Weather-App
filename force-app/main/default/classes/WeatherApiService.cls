@@ -3,7 +3,11 @@ public inherited sharing class WeatherApiService {
     
     public static WeatherModel fetchWeather(Id recordId) {
         
-        Location__c location = getGeolocation(recordId);
+        Location__c location = LocationQueryService.getGeolocation(recordId);
+        if(location == null) {
+            throw new WeatherApiException('Couldn\'t retrieve the location of this record.');
+        }
+        
         Decimal latitude = location.Coordinates__Latitude__s;
         Decimal longitude = location.Coordinates__Longitude__s;
         // Get the API endpoint from the custom setting
@@ -11,15 +15,17 @@ public inherited sharing class WeatherApiService {
         // Construct the endpoint using the geolocation coordinates
         String endpoint = setting.Endpoint__c+'lat=' + latitude + '&lon=' + longitude + '&appid=' + setting.API_Key__c + '&units=metric';
         // Make the callout to the API and parse the response
-        HttpResponse response = makeCallout(endpoint);
-        WeatherModel result = WeatherModel.parse(response.getBody());
-        System.debug(result);
+        WeatherModel result;
+        try {
+            HttpResponse response = makeCallout(endpoint);
+            result = WeatherModel.parse(response.getBody());
+        } catch (Exception e) {
+            //TODO : Logging Framework
+            throw new WeatherApiException('Couldn\'t retrieve the weather information from the weather API');
+        }
+        
+        
         return result;
-    }
-
-    public static Location__c getGeolocation(Id recordId) {
-        // Get the location record for the provided Id
-        return [SELECT Id, Name, Coordinates__Latitude__s, Coordinates__Longitude__s FROM Location__c WHERE Id =: recordId WITH USER_MODE];
     }
 
     public static WeatherApiSetting__c getWeatherApiSetting() {
